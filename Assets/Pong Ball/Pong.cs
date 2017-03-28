@@ -222,13 +222,13 @@ public class Pong : MonoBehaviour
                 transform.position = (Vector3)rewindPositions[posInArray];// set the position!
             }
             posInArray--;//go one frame back
-            GetComponent<SpriteRenderer>().color = Color.blue;
+            GetComponent<SpriteRenderer>().color = new Color(0,0,.5f);
 
         }
         if (rewind && (posInArray <= 0|| Input.GetKeyUp(KeyCode.E)))
         {
             rewind = false;
-            GetComponent<SpriteRenderer>().color = Color.red;
+            GetComponent<SpriteRenderer>().color = Color.white;
 
             fixing = true;
             if (posInArray != 0)
