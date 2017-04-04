@@ -113,6 +113,7 @@ public class firewheelscript : MonoBehaviour
                 transform.rotation = (Quaternion)rewindRotation[posInArray];// set the position!
             }
             posInArray--;//go one frame back
+            GetComponent<SpriteRenderer>().color = new Color(0, 0, .5f);
 
 
         }
@@ -120,6 +121,7 @@ public class firewheelscript : MonoBehaviour
         {
             rewind = false;
             fixing = true;
+            GetComponent<SpriteRenderer>().color = Color.white;
             if (posInArray != 0)
             {
                 rewindRotation.RemoveRange(0, posInArray);
