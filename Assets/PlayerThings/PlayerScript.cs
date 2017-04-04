@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour {
     public bool win = false;
     public bool lost = false;
     bool canLose = true;
+    bool gameOverSong = false;
 
     private Animator animator;
 	void Start () {
@@ -87,7 +88,13 @@ public class PlayerScript : MonoBehaviour {
         {
             win = true;
             Debug.Log("Win = " + win);
-        }else if (canLose&&col.gameObject.CompareTag("Rewindable")&&!win) { lost = true; }
+        }else if (canLose&&col.gameObject.CompareTag("Rewindable")&&!win) { lost = true;
+            if (!gameOverSong)
+            {
+                GetComponent<AudioSource>().Play();
+                gameOverSong = true;
+            }
+        }
 
         //if(col.gameObject.tag)
 
