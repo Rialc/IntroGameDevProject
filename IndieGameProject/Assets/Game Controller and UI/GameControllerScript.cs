@@ -7,7 +7,7 @@ public class GameControllerScript : MonoBehaviour
 {
     public GUIText Timer;//How we display score
     public GUIText GameState;//How we display text for gameover/win
-    public GameObject background;
+    GameObject background;
     public GameObject player;
     public GameObject AnythingThatRewinds;
     public GameObject RewindSlider;
@@ -21,8 +21,8 @@ public class GameControllerScript : MonoBehaviour
     void Start()
     {
         //script = GameObject.Find("Player").GetComponent<ScriptType>();
-
-    }
+        background = GameObject.Find("Background");
+}
 
     // Update is called once per frame
     void Update()
@@ -58,20 +58,21 @@ public class GameControllerScript : MonoBehaviour
             GameState.text = "Nice job! \n Press Space to go to the next level";
             if (Input.GetKeyDown(KeyCode.Space))//Restart code
             {
+                background.GetComponent<SpriteRenderer>().sortingOrder = -5;
                 SceneManager.LoadScene(NameOfNextLevel, LoadSceneMode.Single);
             }
         }
         if (player.GetComponent<PlayerScript>().lost)
         {
-            background.GetComponent<SpriteRenderer>().sortingOrder = 5;
+            /*background.GetComponent<SpriteRenderer>().sortingOrder = 5;
             GameState.text = "Nice try! \n Press Space to go to try again";
            
                 background.GetComponent<AudioSource>().pitch = 0;
             
             if (Input.GetKeyDown(KeyCode.Space))//Restart code
-            {
+            {*/
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);//This is just saying "Hey, reload that scene!" and thus does all the heavy lifting
-            }
+            //}
            
         }
         if (!player.GetComponent<PlayerScript>().win && !player.GetComponent<PlayerScript>().lost) { 
